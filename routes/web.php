@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReproductorController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,15 @@ use App\Http\Controllers\ReproductorController;
 */
 
 Route::get('/', function () {
-    
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::post('/create',[ReproductorController::class,'store']);
+require __DIR__.'/auth.php';
+
+
+Route::get('/create',[ReproductorController::class,'create']);
+Route::post('/store',[ReproductorController::class,'store'])->name('store');

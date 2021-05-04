@@ -24,7 +24,7 @@ class ReproductorController extends Controller
      */
     public function create()
     {
-      
+      return view('create');
     }
 
     /**
@@ -61,7 +61,7 @@ class ReproductorController extends Controller
 
         $reproductor->save();
 
-        return response()->json(['message'=>'record created successfully']);
+        return back()->with('success','record created successfully');
     }
 
     /**
